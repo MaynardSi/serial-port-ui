@@ -32,7 +32,9 @@ namespace SerialPortChat
                 BaudRate = e.BaudRate,
                 Parity = e.Parity,
                 DataBits = e.Databits,
-                StopBits = e.Stopbits
+                StopBits = e.Stopbits,
+                ReadTimeout = 500,
+                WriteTimeout = 500
             };
 
             try
@@ -65,7 +67,14 @@ namespace SerialPortChat
 
         private void OnDataReceived(object sender, EventArgs e)
         {
-            AddLogMessage($"Received: {serialPort.ReadExisting()}");
+            try
+            {
+                AddLogMessage($"Received: {serialPort.ReadExisting()}");
+            }
+            catch (TimeoutException)
+            {
+                AddLogMessage($"Received: READ MESSAGE TIMEOUT...");
+            }
         }
 
         private void OnDataSent(object sender, string e)
