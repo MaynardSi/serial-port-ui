@@ -227,6 +227,7 @@ namespace SerialPortChat
             this.sendMessageButton.TabIndex = 2;
             this.sendMessageButton.Text = "Send";
             this.sendMessageButton.UseVisualStyleBackColor = true;
+            this.sendMessageButton.Click += sendMessageButton_Click;
             //
             // connectToggleButton
             //
@@ -240,6 +241,7 @@ namespace SerialPortChat
             this.connectToggleButton.Text = "Connect";
             this.connectToggleButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.connectToggleButton.UseVisualStyleBackColor = true;
+            this.connectToggleButton.CheckedChanged += connectToggleButton_CheckedChanged;
             //
             // messageRichTextBox
             //
